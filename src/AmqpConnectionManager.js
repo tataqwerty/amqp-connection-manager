@@ -6,9 +6,6 @@ import ChannelWrapper from './ChannelWrapper';
 import { wait } from './helpers';
 import pb from 'promise-breaker';
 
-// Default heartbeat time.
-const HEARTBEAT_IN_SECONDS = 5;
-
 /* istanbul ignore next */
 function neverThrows() {
     return err =>
@@ -57,7 +54,7 @@ export default class AmqpConnectionManager extends EventEmitter {
         this._currentUrl = 0;
         this.connectionOptions = options.connectionOptions;
 
-        this.heartbeatIntervalInSeconds = options.heartbeatIntervalInSeconds || HEARTBEAT_IN_SECONDS;
+        this.heartbeatIntervalInSeconds = options.heartbeatIntervalInSeconds || 0;
         this.reconnectTimeInSeconds = options.reconnectTimeInSeconds || this.heartbeatIntervalInSeconds;
 
         // There will be one listener per channel, and there could be a lot of channels, so disable warnings from node.
