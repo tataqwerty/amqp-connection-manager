@@ -1,5 +1,5 @@
 /node_modules
-/lib
+#g/lib
 /npm-debug.log
 /coverage
 /.nyc_output
